@@ -1,4 +1,4 @@
-## Python Projects
-### Author: Mauricio Sierra C.
+# Python Projects
+## Author: Mauricio Sierra C.
 ### Cohort 13
-# This projects containt task about python
+### This projects containt task about python
