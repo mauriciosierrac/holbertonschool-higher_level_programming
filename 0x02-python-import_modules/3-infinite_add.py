@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import sys
+if __name__ == "__main__":
+    import sys
 
-add = 0
-n = len(sys.argv)
+    add = 0
+    n = len(sys.argv)
 
-for i in range(1, n):
-    add += int(sys.argv[i])
+    for i in range(1, n):
+        add += int(sys.argv[i])
 
-print(add)
+    print(add)
