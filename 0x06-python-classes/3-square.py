@@ -3,7 +3,7 @@
 
 
 class Square:
-    ''' the method validate is size is a integer '''
+    ''' the method validate is size is a integer and calculate square value of size '''
 
     def __init__(self, size=0):
         self.__size = size
