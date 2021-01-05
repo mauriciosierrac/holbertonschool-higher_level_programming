@@ -6,6 +6,7 @@ class Square:
     ''' the method validate is size is a integer and calculate square value of size '''
 
     def __init__(self, size=0):
+        '''documentation'''
         self.__size = size
 
         if not isinstance(self.__size, int):
@@ -15,4 +16,5 @@ class Square:
             raise ValueError('size must be >= 0')
 
     def area(self):
+        '''documentation'''
         return (self.__size ** 2)
