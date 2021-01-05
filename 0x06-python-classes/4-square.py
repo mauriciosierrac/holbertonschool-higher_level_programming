@@ -3,7 +3,7 @@
 
 
 class Square():
-    ''' the method validate is size is a integer and calculate square value of size '''
+    ''' the method validate is size is a integer and calculate square value '''
 
     def __init__(self, size=0):
         '''documentation'''
@@ -14,18 +14,16 @@ class Square():
 
         if self.__size < 0:
             raise ValueError('size must be >= 0')
-	
+
     def area(self):
         '''documentation'''
         return self.__size ** 2
-    
-    #a getter function
+
     @property
     def size(self):
         '''documentation'''
         return self.__size
-   
-    #a setter function 
+
     @size.setter
     def size(self, value):
         '''documentation'''
