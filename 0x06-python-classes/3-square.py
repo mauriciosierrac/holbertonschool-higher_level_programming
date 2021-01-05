@@ -2,8 +2,8 @@
 ''' class square defines a square by 1-square.py'''
 
 
-class Square:
-    ''' the method validate is size is a integer and calculate square value of size '''
+class Square():
+    ''' the method validate is size is a integer and calculate square value '''
 
     def __init__(self, size=0):
         '''documentation'''
