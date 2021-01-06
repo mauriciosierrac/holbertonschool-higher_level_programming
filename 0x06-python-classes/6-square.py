@@ -2,7 +2,7 @@
 ''' class square defines a square by 1-square.py'''
 
 
-class Square():
+class Square:
     ''' the method validate is size is a integer and calculate square value '''
 
     def __init__(self, size=0, position=(0, 0)):
@@ -18,15 +18,16 @@ class Square():
     @size.setter
     def size(self, value):
         '''documentation'''
-        self.__size = value
-        if not isinstance(self.__size, int):
+
+        if type(value) != int:
             raise TypeError('size must be an integer')
-        elif self.__size < 0:
+        if value < 0:
             raise ValueError('size must be >= 0')
+        self.__size = value
 
     @property
     def position(self):
-        '''documentation'''
+        '''documentations'''
         return self.__position
 
     @position.setter
@@ -36,8 +37,6 @@ class Square():
                 type(value[0]) is not int or value[0] < 0 or
                 type(value[1]) is not int or value[1] < 0):
             raise TypeError('position must be a tuple of 2 positive integers')
-        else:
-            self.__position = value
 
     def area(self):
         '''documentation'''
@@ -49,9 +48,8 @@ class Square():
         '''documentation'''
         if self.__size == 0:
             print()
-            return
-
-        for i in range(self.__position[1]):
-            print()
-        for i in range(self.__size):
-            print("{}".format((' ' * self.__position[0] + '#' * self.__size)))
+        else:
+            print('\n' * self.__position[1], end='')
+            for i in range(self.__size):
+                print(' ' * self.__position[0], end='')
+                print('#' * self.__size)
