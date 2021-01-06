@@ -10,22 +10,19 @@ class Square():
         self.__size = size
         self.__position = position
 
-    def area(self):
+    @property
+    def size(self):
         '''documentation'''
-        if type(self.__size) is not int:
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        '''documentation'''
+        self.__size = value
+        if not isinstance(self.__size, int):
             raise TypeError('size must be an integer')
-        return self.__size ** 2
-
-    def my_print(self):
-        '''documentation'''
-        if self.__size == 0:
-            print()
-            return
-
-        for i in range(self.__position[1]):
-            print()
-        for i in range(self.__size):
-            print("{}".format((' ' * self.__position[0] + '#' * self.__size)))
+        elif self.__size < 0:
+            raise ValueError('size must be >= 0')
 
     @property
     def position(self):
@@ -42,16 +39,19 @@ class Square():
         else:
             self.__position = value
 
-    @property
-    def size(self):
+    def area(self):
         '''documentation'''
-        return self.__size
-
-    @size.setter
-    def size(self, value):
-        '''documentation'''
-        self.__size = value
-        if not isinstance(self.__size, int):
+        if type(self.__size) is not int:
             raise TypeError('size must be an integer')
-        elif self.__size < 0:
-            raise ValueError('size must be >= 0')
+        return self.__size ** 2
+
+    def my_print(self):
+        '''documentation'''
+        if self.__size == 0:
+            print()
+            return
+
+        for i in range(self.__position[1]):
+            print()
+        for i in range(self.__size):
+            print("{}".format((' ' * self.__position[0] + '#' * self.__size)))
