@@ -1,0 +1,69 @@
+=========================
+How use -add_int Function
+=========================
+
+Usage 
+-----
+
+Import the function:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Tests for Success cases:
+
+Test for Positive Numbers:
+
+    >>> add_integer(10, 7)
+    17
+	
+	>>> add_integer(2)
+
+    100
+
+Test for Negative Numbers
+
+    >>> add_integer(100, -2)
+    98
+
+Test float Numbers
+
+    The floaters will become integers
+    >>> add_integer(100.3, -2)
+    98
+
+Test Error Cases:
+
+Only integers and floats may be provided.
+
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+At least one argument must be provided.
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+At least one argument is required.
+
+    >>> add_integer()
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Test for a list
+
+    >>> add_integer([7, 8, 9])
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Test for a tuple
+
+    >>> add_integer((7, 8, 9))
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
