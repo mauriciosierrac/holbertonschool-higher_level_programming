@@ -16,13 +16,7 @@ The first and last name
     >>> say_my_name("Walter", "White")
     My name is Walter White
 
-The last name is optional
-    >>> say_my_name("Bob")
-    My name is Bob
 
-Test with empty strings
-    >>> say_my_name("", "")
-    My name is
 
 Test Error Cases:
 
