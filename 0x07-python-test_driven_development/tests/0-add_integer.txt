@@ -15,10 +15,7 @@ Test for Positive Numbers:
 
     >>> add_integer(10, 7)
     17
-	
-	>>> add_integer(2)
 
-    100
 
 Test for Negative Numbers
 
@@ -39,6 +36,7 @@ Only integers and floats may be provided.
     Traceback (most recent call last):
         ...
     TypeError: b must be an integer
+
 
 At least one argument must be provided.
 
