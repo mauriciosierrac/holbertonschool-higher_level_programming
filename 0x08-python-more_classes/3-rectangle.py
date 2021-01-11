@@ -28,40 +28,40 @@ class Rectangle:
 
     @property
     def height(self):
-        '''getter heigth'''
+        '''getter height'''
         return self.__height
 
     @height.setter
     def height(self, value):
-        '''setter heigth'''
+        '''setter height'''
         if type(value) is not int:
-            raise TypeError('heigth must be an integer')
+            raise TypeError('height must be an integer')
         if value < 0:
-            raise ValueError('heigth must be >= 0')
-        self.__heigth = value
+            raise ValueError('height must be >= 0')
+        self.__height = value
 
     def perimeter(self):
         ''' that method calcule perimeter to rectangle'''
-        if (self.__width == 0 or self.__heigth == 0):
+        if (self.__width == 0 or self.__height == 0):
             P = 0
         else:
-            P = ((2 * self.__width) + (2 * self.__heigth))
+            P = ((2 * self.__width) + (2 * self.__height))
         return P
 
     def area(self):
         '''that method calcule area to perimeter'''
-        if (self.__width == 0 or self.__heigth == 0):
+        if (self.__width == 0 or self.__height == 0):
             A = 0
         else:
-            A = self.__width * self.__heigth
+            A = self.__width * self.__height
         return A
 
     def __str__(self):
         '''this method print a rectangle with # character'''
         printr = ""
-        if (self.__width == 0 or self.__heigth == 0):
+        if (self.__width == 0 or self.__height == 0):
             return printr
 
-        for i in range(self.__heigth):
+        for i in range(self.__height):
             printr += ('#' * self.__width + '\n')
         return printr[:-1]
