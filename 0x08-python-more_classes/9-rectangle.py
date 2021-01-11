@@ -62,17 +62,14 @@ class Rectangle:
     def perimeter(self):
         ''' that method calcule perimeter to rectangle'''
         if (self.__width == 0 or self.__height == 0):
-            return 0
+            P = 0
         else:
             P = ((2 * self.__width) + (2 * self.__height))
         return P
 
     def area(self):
         '''that method calcule area to perimeter'''
-        if (self.__width == 0 or self.__height == 0):
-            A = 0
-        else:
-            A = self.__width * self.__height
+        A = self.__width * self.__height
         return A
 
     def __str__(self):
