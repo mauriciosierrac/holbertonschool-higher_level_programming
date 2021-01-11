@@ -15,7 +15,7 @@ class Rectangle:
         self.height = height
         self.width = width
         type(self).number_of_instances += 1
-        
+
     @property
     def height(self):
         '''getter height'''
@@ -43,6 +43,7 @@ class Rectangle:
         if value < 0:
             raise ValueError('width must be >= 0')
         self.__width = value
+
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         ''' that method return the most bigger rectangle'''
@@ -53,7 +54,7 @@ class Rectangle:
         if rect_1.area() >= rect_2.area():
             return rect_1
         return rect_2
-    
+
     @classmethod
     def square(cls, size=0):
         return cls(size, size)
