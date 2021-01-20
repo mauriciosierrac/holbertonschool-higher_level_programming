@@ -45,4 +45,10 @@ Test for Success Cases:
 
 	>>>l3_list.print_sorted()
 	[0, 0, 0, 0]
+
+	>>>l4_list = MyList()
+	>>>type(l4_list)
+	<class '1-my_list.MyList'>
+
+	
 	
