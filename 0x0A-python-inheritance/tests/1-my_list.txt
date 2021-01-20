@@ -12,25 +12,27 @@ Import the class:
 
 Intance MyList object:
 
-    >>> list1 = MyList()
-    >>> type(list1)
+    >>> new_list = MyList()
+    >>> type(new_list)
     <class '1-my_list.MyList'>
 
-    >>> print(list1)
+    >>> print(new_list)
     []
 
 Test for Success Cases:
 
-    >>> list1.append(1)
-    >>> list1.append(-29)
-    >>> print(list1)
-    [1, -29]
+    >>> new_list.append(4)
+    >>> new_list.append(6)
+    >>> new_list.append(2)
+    >>> new_list.append(7)
+    >>> print(new_list)
+    [4, 6, 2, 7]
 
-    >>> list1.print_sorted()
-    [-29, 1]
+    >>> new_list.print_sorted()
+    [2, 4, 6, 7]
 
-    >>> list2 = MyList()
-    >>> list2.print_sorted()
+    >>> new_list2 = MyList()
+    >>> new_list2.print_sorted()
     []
 
 --------------------
