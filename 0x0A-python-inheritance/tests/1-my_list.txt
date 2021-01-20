@@ -1,54 +1,42 @@
-==============
-How use MyList
-==============
+===========================
+How use MyList class
+===========================
 
+=====
 Usage
------
+=====
 
-Import The function:
+Import the class:
 
-	>>> MyList = __import__('1-my_list').MyList
+    >>> MyList = __import__('1-my_list').MyList
+
+Intance MyList object:
+
+    >>> list1 = MyList()
+    >>> type(list1)
+    <class '1-my_list.MyList'>
+
+    >>> print(list1)
+    []
 
 Test for Success Cases:
 
+    >>> list1.append(1)
+    >>> list1.append(-29)
+    >>> print(list1)
+    [1, -29]
 
-	>>>my_list = MyList()
-	>>>my_list.print_sorted()
-	[]
+    >>> list1.print_sorted()
+    [-29, 1]
 
-	>>>l1_list = MyList('H')
-	>>>l1_list.print_sorted()
-	['H']
+    >>> list2 = MyList()
+    >>> list2.print_sorted()
+    []
 
-	>>>l2_list = MyList('betty')
-	>>>l2_list.print_sorted()
-	['b', 'e', 't', 't', 'y']
+--------------------
+PEP8 STYLE
+--------------------
 
-	>>>my_list.append(1)
-	>>>my_list.append(4)
-	>>>my_list.append(2)
-	>>>my_list.append(3)
-	>>>my_list.append(5)
-	>>>print(my_list)
-	[1, 4, 2, 3, 5]
-
-	>>>my_list.print_sorted()
-	[1, 2, 3, 4, 5]
-
-	>>>l3_list = MyList()
-	>>>l3_list.append(0)
-	>>>l3_list.append(0)
-	>>>l3_list.append(0)
-	>>>l3_list.append(0)
-	>>>print(l3_list)
-	[0, 0, 0, 0]
-
-	>>>l3_list.print_sorted()
-	[0, 0, 0, 0]
-
-	>>>l4_list = MyList()
-	>>>type(l4_list)
-	<class '1-my_list.MyList'>
-
-	
-	
+    >>> import os
+    >>> os.popen("pep8 1-my_list.py").read()
+    ''
