@@ -8,10 +8,10 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         '''constructor'''
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
 
     @property
@@ -19,37 +19,53 @@ class Rectangle(Base):
         '''getter method'''
         return self.__width
 
-    @width.setter
-    def width(self, width):
-        '''setter method'''
-        self.__width = width
-
     @property
     def height(self):
         '''getter method'''
         return self.__height
 
-    @height.setter
-    def height(self, height):
-        '''setter method'''
-        self.__height = height
-
     @property
     def x(self):
-        '''setter method'''
+        '''Getter method'''
         return self.__x
-
-    @x.setter
-    def x(self, x):
-        '''getter method'''
-        self.__x = x
 
     @property
     def y(self):
-        '''setter method'''
+        '''Getter method'''
         return self.__y
 
-    @y.setter
-    def y(self, y):
+    @width.setter
+    def width(self, value):
+        '''setter method'''
+        if type(value) is not int:
+            raise TypeError('width must be an integer')
+        if value <= 0:
+            raise ValueError('width must be > 0')
+        self.__width = value
+
+    @height.setter
+    def height(self, value):
+        '''setter method'''
+        if type(value) is not int:
+            raise TypeError('height must be an integer')
+        if value <= 0:
+            raise ValueError('height must be > 0')
+        self.__height = value
+
+    @x.setter
+    def x(self, value):
         '''getter method'''
-        self.__y = y
+        if type(value) is not int:
+            raise TypeError('x must be an integer')
+        if value < 0:
+            raise ValueError('x must be > 0')
+        self.__x = value
+
+    @y.setter
+    def y(self, value):
+        '''getter method'''
+        if type(value) is not int:
+            raise TypeError('y must be an integer')
+        if value < 0:
+            raise ValueError('y must be > 0')
+        self.__y = value
