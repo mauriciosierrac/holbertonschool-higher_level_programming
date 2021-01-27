@@ -26,6 +26,7 @@ class TestSquare_init(unittest.TestCase):
             [10, 10, 2, 1, 13]]
         self.assertEqual(l_exp, l_real)
 
+    '''
     def test_set_size(self):
         s = Square(1)
 
@@ -146,3 +147,4 @@ class TestSquare_to_dictionary(unittest.TestCase):
         exp = {'id': s.id, 'x': 2, 'size': 10, 'y': 1}
         real = s.to_dictionary()
         self.assertEqual(exp, real)
+        '''

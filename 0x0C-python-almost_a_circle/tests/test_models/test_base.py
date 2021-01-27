@@ -20,6 +20,7 @@ class TestBase_init(unittest.TestCase):
         l_id = [b1.id, b2.id, b3.id]
         self.assertEqual([_id, _id + 1, _id + 2], l_id)
 
+    '''
     def test_id_number(self):
         self.assertEqual(55, Base(55).id)
 
@@ -53,7 +54,7 @@ class TestBase_to_json_string(unittest.TestCase):
         exp = [
             {"x": 2, "width": 10, "id": r1.id, "height": 7, "y": 8},
             {"x": 4, "width": 20, "id": r2.id, "height": 14, "y": 16}
-            ]
+        ]
         real = eval(json_dictionary)
         self.assertEqual(exp, real)
 
@@ -109,7 +110,7 @@ class TestBase_save_to_file(unittest.TestCase):
         expr = [
             {"y": 8, "x": 2, "id": r1.id, "width": 10, "height": 7},
             {"y": 0, "x": 0, "id": r2.id, "width": 2, "height": 4}
-            ]
+        ]
         with open("Rectangle.json", "r") as file:
             realr = eval(file.read())
         self.assertEqual(expr, realr)
@@ -121,7 +122,7 @@ class TestBase_save_to_file(unittest.TestCase):
         exps = [
             {"y": 8, "x": 2, "id": s1.id, "size": 10},
             {"y": 0, "x": 4, "id": s2.id, "size": 2}
-            ]
+        ]
         with open("Square.json", "r") as file:
             reals = eval(file.read())
         self.assertEqual(exps, reals)
@@ -187,7 +188,7 @@ class TestBase_from_json_string(unittest.TestCase):
         list_input = [
             {'id': 89, 'width': 10, 'height': 4},
             {'id': 7, 'width': 1, 'height': 7}
-            ]
+        ]
         json_list_input = Rectangle.to_json_string(list_input)
         list_output = Rectangle.from_json_string(json_list_input)
 
@@ -197,6 +198,7 @@ class TestBase_from_json_string(unittest.TestCase):
 
 class TestBase_crate(unittest.TestCase):
     """Test cases for create method in Base class"""
+
     def test_create_square(self):
         s1 = Square(3, 5, 1)
         s1_dictionary = s1.to_dictionary()
@@ -222,3 +224,4 @@ class TestBase_load_from_file(unittest.TestCase):
     def test_load_none_file(self):
         list_squares_output = Square.load_from_file()
         self.assertEqual([], list_squares_output)
+        '''
