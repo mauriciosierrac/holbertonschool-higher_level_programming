@@ -1,48 +1,97 @@
 #!/usr/bin/python3
-"""module for use in testing
-    base class
+"""
+Base modular tests
 """
 
-
-import os
 import unittest
-from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
+import pycodestyle
+import inspect
+import pep8
+import json
+from models import base
+Base = base.Base
 
 
-class TestBase(unittest.TestCase):
-    """Tests"""
+class BaseTest(unittest.TestCase):
+    """Set of tests"""
 
-    def test_basic(self):
-        """tests basic functionality
-        """
-        b = Base()
-        b2 = Base()
-        b3 = Base()
-        self.assertEqual(b2.id + 1, b3.id)
+    @classmethod
+    def setUpClass(cls):
+        """Set up for the doc tests"""
+        cls.base_funcs = inspect.getmembers(Base, inspect.isfunction)
 
-    def test_given_id(self):
-        """tests id being set when given and not upticking default
-        """
-        b = Base()
-        b2 = Base(24)
-        b3 = Base(46)
-        b4 = Base()
-        self.assertEqual(46, b3.id)
-        self.assertEqual(b.id + 1, b4.id)
+    def setUp(self):
+        """setting up for each test """
+        Base._Base__nb_objects = 0
 
-    def test_json_method(self):
-        """tests Base's to_json_string method
-        """
-        r1 = Rectangle(4, 5, 6, 7, 8)
-        r2 = Rectangle(10, 11, 12, 13, 14)
-        d1 = r1.to_dictionary()
-        d2 = r2.to_dictionary()
-        json_dict = Base.to_json_string([d1, d2])
-        j_d = eval(json_dict)
-        self.assertEqual(j_d[0]['id'], 8)
-        self.assertEqual(j_d[1]['x'], 12)
+    def test_pep8_conformance_test_base(self):
+        """Test pep8 that models/base.py"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['tests/test_models/test_base.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+    def test_pep8_conformance_base(self):
+        """Test pep8 models/base.py PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/base.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+    def test_positive_id(self):
+        """test positive id"""
+        base = Base(16)
+        self.assertEqual(base.id, 16)
+        base = Base(22)
+        self.assertEqual(base.id, 22)
+
+    def test_negative_id(self):
+        """test negatice id"""
+        base = Base(-16)
+        self.assertEqual(base.id, -16)
+        base = Base(-22)
+        self.assertEqual(base.id, -22)
+
+    def tets_none_id(self):
+        """test none id"""
+        base = Base()
+        self.assertEqual(base.id, 1)
+        base = Base()
+        self.assertEqual(base.id, 2)
+
+    def test_docstring(self):
+        """test docstring"""
+        self.assertTrue(len(Base.__doc__) >= 1)
+
+    def test_to_json_string(self):
+        """test to_json_string"""
+        Base._Base__nb_objects = 0
+        line1 = {"id": 2, "width": 5, "height": 6, "x": 7, "y": 8}
+        line2 = {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}
+        json_s = Base.to_json_string([line1, line2])
+        self.assertTrue(type(json_s) is str)
+        line = json.loads(json_s)
+        self.assertEqual(line, [line1, line2])
+
+    def test_emty_to_json_string(self):
+        """a"""
+        json_s = Base.to_json_string([])
+        self.assertTrue(type(json_s) is str)
+        self.assertEqual(json_s, "[]")
+
+    def test_from_json_string(self):
+        """Tests regular from_json_string"""
+        json_str = '[{"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}, \
+{"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}]'
+        json_l = Base.from_json_string(json_str)
+        self.assertTrue(type(json_l) is list)
+        self.assertEqual(len(json_l), 2)
+        self.assertTrue(type(json_l[0]) is dict)
+        self.assertTrue(type(json_l[1]) is dict)
+        self.assertEqual(json_l[0],
+                         {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8})
+        self.assertEqual(json_l[1],
+                         {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0})
 
     def test_fjs_empty(self):
         """Tests from_json_string with an empty string"""
@@ -51,33 +100,3 @@ class TestBase(unittest.TestCase):
     def test_fjs_None(self):
         """Tests from_json_string th an empty string"""
         self.assertEqual([], Base.from_json_string(None))
-
-    def test_emty_to_json_string(self):
-        """a"""
-        json_s = Base.to_json_string([])
-        self.assertTrue(type(json_s) is str)
-        self.assertEqual(json_s, "[]")
-
-    def test_docstring(self):
-        """test docstring"""
-        self.assertTrue(len(Base.__doc__) >= 1)
-
-    def test_from_json_empty(self):
-        """tests base's from_json_string method with empty inputs
-        """
-        d_list = Base.from_json_string("")
-        self.assertEqual(len(d_list), 0)
-        d_list = Base.from_json_string(None)
-        self.assertEqual(len(d_list), 0)
-
-    def test_read_from_file(self):
-        """tests the base class method read from file, for use in
-            -> Rectangle and Square
-        """
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        list_rectangles_input = [r1, r2]
-        Rectangle.save_to_file(list_rectangles_input)
-        list_rectangles_output = Rectangle.load_from_file()
-        self.assertEqual(list_rectangles_output[0].y, 8)
-        self.assertEqual(list_rectangles_output[1].height, 4)
