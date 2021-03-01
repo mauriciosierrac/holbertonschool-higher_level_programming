@@ -1,0 +1,3 @@
+-- DELETE A FIELD WHIT <=5 CONDITION
+DELETE FROM second_table 
+WHERE score <= 5;
