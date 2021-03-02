@@ -1,6 +1,7 @@
 -- list all cities in DB
-SELECT c.id, c.name, s.name
+-- use inner join
+SELECT `c`.`id`, `c`.`name`, `s`.`name`
 FROM cities as c
 INNER JOIN states as s
-ON c.state_id = s.id
-ORDER BY c.id;
+ON `c`.`state_id` = `s`.`id`
+ORDER BY `c`.`id`;
