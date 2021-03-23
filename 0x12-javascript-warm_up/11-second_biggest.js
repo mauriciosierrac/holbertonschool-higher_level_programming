@@ -1,7 +1,11 @@
 #!/usr/bin/node
-if (process.argv.length <= 3) {
+const myArg = process.argv
+if (myArg.length <= 3) {
   console.log(0);
 } else {
-  let list = process.argv.sort();
-  console.log(list.reverse()[1]);
+  const list = myArg
+    .slice(2, myArg.length)
+    .map(Number)
+    .sort().reverse()
+  console.log(list[1])
 }
