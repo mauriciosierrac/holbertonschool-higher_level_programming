@@ -4,6 +4,6 @@ if (process.argv.length <= 3) {
 } else {
   const list = process.argv.map(Number)
   .slice(2, process.argv.length)
-  .sort().reverse();
+  .sort(function (a, b) { return b - a; })
   console.log(parseInt(list[1]));
 }
