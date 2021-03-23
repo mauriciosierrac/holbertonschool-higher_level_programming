@@ -6,6 +6,7 @@ if (myArg.length <= 3) {
   const list = myArg
     .slice(2, myArg.length)
     .map(Number)
-    .sort().reverse()
-  console.log(list[1])
+    .sort()
+    .reverse();
+  console.log(list[1]);
 }
