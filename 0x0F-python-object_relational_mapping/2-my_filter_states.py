@@ -11,7 +11,7 @@ if __name__ == '__main__':
     
 
 conn = MySQLdb.connect(host="localhost", port=3306,
-                       user=myUser, passwd="", db=myDb, charset="utf8")
+                       user=myUser, passwd=myPswd, db=myDb, charset="utf8")
 cur = conn.cursor()
 
 cur.execute("SELECT * FROM states WHERE name ='{myName}'".format(myName = argv[4]) )
