@@ -8,7 +8,8 @@ if __name__ == '__main__':
 
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM states JOIN cities ON  states.id = cities.state_id ORDER BY cities.id ASC")
+    cur.execute(
+        "SELECT * FROM states JOIN cities ON  states.id = cities.state_id ORDER BY cities.id ASC")
 
     query = cur.fetchall()
     x = ''
