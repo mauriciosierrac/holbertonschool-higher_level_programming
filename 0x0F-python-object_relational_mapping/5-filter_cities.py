@@ -9,13 +9,14 @@ if __name__ == '__main__':
     cur = conn.cursor()
 
     cur.execute("SELECT * FROM states JOIN cities ON  states.id = cities.state_id ORDER BY cities.id ASC")
-    
-    for rows in cur.fetchall():
-        if rows[2] == argv [4]:
-            print(', '.join(rows[2]))
-    
-    
+
+    query = cur.fetchall()
+    x = ''
+    for i in query:
+        if i[1] == argv[4]:
+            print('{}{}'.format(x, i[4]), end="")
+            x = ', '
+    print()
 
     cur.close()
     conn.close()
-
