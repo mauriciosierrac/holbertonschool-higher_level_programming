@@ -10,7 +10,7 @@ if __name__ == '__main__':
                            user=argv[0], passwd=argv[1],
                            db=argv[2], charset="utf8")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    cur.execute("SELECT * FROM states")
 
     query_rows = cur.fetchall()
 
