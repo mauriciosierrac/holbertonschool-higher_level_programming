@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-'''that method print the fields of containts char 'a' in state table'''
+'''that method print the fields of containts argv[4] in state table'''
 
 import sys
 from model_state import Base, State
