@@ -12,13 +12,9 @@ if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    session = sessionmaker(bind=engine)
 
-    Base.metadata.create_all(engine)
-
-    myQuery = session.query(State.id, State.name).filter(
-        State.name == sys.argv[4]).all()
+    myQuery = session().query(State).filter(State.name == sys.argv[4]).all()
 
     if myQuery:
         for i in myQuery:
@@ -26,3 +22,5 @@ if __name__ == "__main__":
                 print('{}'.format(i.id))
     else:
         print('Not Found')
+
+    session().close()
