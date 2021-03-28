@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''that method print the first field in state table'''
 
 import sys
 from model_state import Base, State
@@ -15,7 +16,9 @@ if __name__ == "__main__":
 
     Base.metadata.create_all(engine)
 
-    myQuery = session.query(State).filter(State.id == 1)
+    myQuery = session.query(State).order_by(State.id).first()
 
-    for i in myQuery:
-        print('{}: {}'.format(i.id, i.name))
+    if myQuery is None:
+        print('Nothing')
+    else:
+        print('{}: {}'.format(myQuery.id, myQuery.name))
