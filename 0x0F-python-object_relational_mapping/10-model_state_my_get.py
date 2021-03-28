@@ -21,6 +21,6 @@ if __name__ == "__main__":
             if i.name == sys.argv[4]:
                 print('{}'.format(i.id))
     else:
-        print('Not Found')
+        print('Not found')
 
     session().close()
