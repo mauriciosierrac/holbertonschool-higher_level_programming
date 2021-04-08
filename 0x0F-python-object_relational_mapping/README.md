@@ -1,5 +1,4 @@
-# 0x0F. Python - Object-relational mapping
-
+# 0x0F. Python - Object-relational mapping :snake:
 ## Resources:books:
 Read or watch:
 * [Object-relational mappers](https://intranet.hbtn.io/rltoken/IqdjUaZ31ZfP6eT-lTyUkA)

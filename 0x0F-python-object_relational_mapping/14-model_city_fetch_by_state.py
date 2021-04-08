@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-'''that method print the first field in state table'''
+''' this module list all cities Objects form the database hbtn'''
 
 import sys
 from model_state import Base, State
-from sqlalchemy.orm import sessionmaker
+from model_city import City
 from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
 
@@ -14,11 +15,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    Base.metadata.create_all(engine)
-
-    myQuery = session.query(State).order_by(State.id).first()
-
-    if myQuery is None:
-        print('Nothing')
-    else:
-        print('{}: {}'.format(myQuery.id, myQuery.name))
+    for city, state in session.query(City, State)\
+        .filter(City.state_id == State.id)\
+            .order_by(City.id):
+        print('{}: ({}) {}'.format(state.name, city.id, city.name))
