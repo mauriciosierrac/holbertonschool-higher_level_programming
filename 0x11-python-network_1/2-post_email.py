@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''Write a Python script that takes in a URL'''
 
 from sys import argv
